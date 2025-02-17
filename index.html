@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dot Matrix Camera</title>
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            overflow: hidden;
+        }
+        canvas {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+        #controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);  /* Safari support */
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+        }
+        .control-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input[type="range"] {
+            width: 200px;
+        }
+        .control-group input[type="number"] {
+            width: 80px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        .sub-controls {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+        .sub-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="controls">
+        <div class="control-group">
+            <label>Matrix Density</label>
+            <input type="range" id="density" min="8" max="1440" value="1200" step="8">
+            <span id="densityValue">1200 x 1200</span>
+            <div class="sub-controls">
+                <div>
+                    <span class="sub-label">Min Value (px)</span>
+                    <input type="number" id="minDensity" value="8" min="1" max="1440" step="1">
+                </div>
+                <div>
+                    <span class="sub-label">Max Value (px)</span>
+                    <input type="number" id="maxDensity" value="1440" min="1" max="1920" step="1">
+                </div>
+                <div>
+                    <span class="sub-label">Step Value (px)</span>
+                    <input type="number" id="stepDensity" value="8" min="1" max="32" step="1">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label>Dot Settings</label>
+            <div class="sub-controls">
+                <div>
+                    <span class="sub-label">Dot Size (px)</span>
+                    <input type="number" id="dotSize" value="16" min="1" max="32" step="1">
+                </div>
+                <div>
+                    <span class="sub-label">Dot Spacing (px)</span>
+                    <input type="number" id="dotSpacing" value="16" min="1" max="32" step="1">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label>Dot Color</label>
+            <input type="color" id="dotColor" value="#ffffff">
+        </div>
+        <div class="control-group">
+            <label>Brightness Settings</label>
+            <div class="sub-controls">
+                <div>
+                    <span class="sub-label">Gamma Value</span>
+                    <input type="number" id="gamma" value="0.4" min="0.1" max="2.0" step="0.1">
+                </div>
+                <div>
+                    <span class="sub-label">Brightness Range (Min)</span>
+                    <input type="number" id="brightnessMin" value="0.7" min="0.0" max="1.0" step="0.1">
+                </div>
+                <div>
+                    <span class="sub-label">Brightness Range (Max)</span>
+                    <input type="number" id="brightnessMax" value="0.9" min="0.0" max="1.0" step="0.1">
+                </div>
+                <div>
+                    <span class="sub-label">Contrast</span>
+                    <input type="number" id="contrast" value="1.5" min="0.1" max="5.0" step="0.1">
+                </div>
+                <div>
+                    <span class="sub-label">Threshold</span>
+                    <input type="number" id="threshold" value="0.2" min="0.0" max="1.0" step="0.05">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label>Glow Settings</label>
+            <div class="sub-controls">
+                <div>
+                    <span class="sub-label">Glow Radius</span>
+                    <input type="number" id="glowRadius" value="1.5" min="1.0" max="3.0" step="0.1">
+                </div>
+                <div>
+                    <span class="sub-label">Glow Intensity</span>
+                    <input type="number" id="glowIntensity" value="2.0" min="0.0" max="5.0" step="0.1">
+                </div>
+                <div>
+                    <span class="sub-label">Color Dodge Blend</span>
+                    <input type="number" id="colorDodgeBlend" value="0.5" min="0.0" max="1.0" step="0.1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html> 
