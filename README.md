@@ -2,6 +2,9 @@
 
 A WebGL-based camera effect that transforms video input into an interactive dot matrix display with dynamic glow effects.
 
+<img width="1318" alt="image" src="https://github.com/user-attachments/assets/6e77ff05-9389-4b7f-b2a0-9de20a828094" />
+
+
 ## Features
 
 - Real-time video to dot matrix conversion
